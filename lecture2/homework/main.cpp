@@ -3,8 +3,15 @@
 
 int main(int argc, char **argv) 
 {
-    
-    cv::Mat src = cv::imread("./img/test_2.jpg");
+    if (argc < 2)
+    {
+        
+        fmt::print("Usage: {} <input_image>\n", argv[0]);
+        return 1;
+    }
+    std::string inPath = argv[1];
+    fmt::print("Input image path: {}\n", inPath);
+    cv::Mat src = cv::imread(inPath);
     if(src.empty()) 
     {
         fmt::print("Could not open or find the image!\n");
